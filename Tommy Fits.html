@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Counter Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            gap: 1rem;
+            height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .block {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            gap: 0.5rem;
+            position: relative;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .block-2x2 {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .block-4x2 {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .counter {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        button {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        .reset-button {
+            background-color: #dc2626;
+            padding: 0.5rem 1rem;
+            margin-top: 2rem;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .title {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white">
+    <header>
+        <header class="flex justify-center items-center gap-4 mb-8">
+            <h1 class="text-4xl font-bold text-white">Tommy Hilfiger</h1>
+            <!-- Use the provided URL for the logo image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Tommy_Hilfiger_Logo.png" alt="Tommy Hilfiger Logo" class="h-12"> <!-- Adjust the class as needed for size -->
+        </header>
+        
+    </header>
+    <div class="grid-container">
+        <!-- JavaScript functions -->
+        <script>
+            function increment(id) {
+                let element = document.getElementById('counter-' + id);
+                element.textContent = parseInt(element.textContent, 10) + 1;
+            }
+
+            function decrement(id) {
+                let element = document.getElementById('counter-' + id);
+                let value = parseInt(element.textContent, 10);
+                if (value > 0) element.textContent = value - 1;
+            }
+
+            function reset(id) {
+                let element = document.getElementById('counter-' + id);
+                element.textContent = 0;
+            }
+        </script>
+        <!-- Block 1 (Room 1) -->
+        <!-- ... same as before ... --
+ <!-- Block 1 (Room 1) -->
+ <div class="block block-2x2" style="grid-area: 1 / 7 / 3 / 9;">
+    <div class="title">Room 1</div>
+    <div class="counter-controls">
+        <button onclick="decrement(1)">-</button>
+        <span id="counter-1" class="counter">0</span>
+        <button onclick="increment(1)">+</button>
+    </div>
+    <button onclick="reset(1)" class="reset-button">RESET</button>
+</div>            >
+        <!-- Block 2 (Room 2) -->
+        <div class="block block-2x2" style="grid-area: 1 / 5 / 3 / 7;">
+            <div class="title">Room 2</div>
+            <div class="counter-controls">
+                <button onclick="decrement(2)">-</button>
+                <span id="counter-2" class="counter">0</span>
+                <button onclick="increment(2)">+</button>
+            </div>
+            <button onclick="reset(2)" class="reset-button">RESET</button>
+        </div>
+        <!-- Block 3 (Room 3) -->
+        <!-- Block 3 (Room 3) -->
+        <div class="block block-2x2" style="grid-area: 1 / 3 / 3 / 5;">
+            <div class="title">Room 3</div>
+            <div class="counter-controls">
+                <button onclick="decrement(3)">-</button>
+                <span id="counter-3" class="counter">0</span>
+                <button onclick="increment(3)">+</button>
+            </div>
+            <button onclick="reset(3)" class="reset-button">RESET</button>
+        </div>
+        <!-- Block 4 (Room 4) -->
+        <div class="block block-4x2" style="grid-area: 1 / 1 / 5 / 3;">
+            <div class="title">Room 4</div>
+            <div class="counter-controls">
+                <button onclick="decrement(4)">-</button>
+                <span id="counter-4" class="counter">0</span>
+                <button onclick="increment(4)">+</button>
+            </div>
+            <button onclick="reset(4)" class="reset-button">RESET</button>
+        </div>
+        <!-- Block 5 (Room 5) directly under Block 4 -->
+        <div class="block block-2x2" style="grid-area: 5 / 1 / 7 / 3;">
+            <div class="title">Room 5</div>
+            <div class="counter-controls">
+                <button onclick="decrement(5)">-</button>
+                <span id="counter-5" class="counter">0</span>
+                <button onclick="increment(5)">+</button>
+            </div>
+            <button onclick="reset(5)" class="reset-button">RESET</button>
+        </div>
+    </div>
+</body>
+</html>
+
